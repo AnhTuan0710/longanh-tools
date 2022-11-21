@@ -37,3 +37,634 @@
     transform: translateY(0px);
   }
 }
+// ---------------SCSS Themes-----------
+$main: #f45f0f;
+$main-filter: invert(60%) sepia(68%) saturate(372%) hue-rotate(56deg) brightness(99%) contrast(87%);
+$main-background: #60d1cb;
+$main-background1: #60d1cb;
+$main2: #4bb862;
+$color-border: rgba(115, 192, 75, 0.4);
+$main2-filter: invert(69%) sepia(47%) saturate(562%) hue-rotate(80deg) brightness(83%) contrast(83%);
+$blue: #0084ff;
+$red: #ff442b;
+$danger: #fc6c6a;
+$orange: #dfb947;
+$danger-filter: invert(58%) sepia(24%) saturate(4158%) hue-rotate(321deg) brightness(104%) contrast(99%);
+$white: #fff;
+$white-filter: invert(100%) sepia(100%) saturate(14%) hue-rotate(212deg) brightness(104%) contrast(104%);
+$black: #000000 !default;
+$black-gray: #1d243e;
+$gray: #bbbbbb;
+$gray-filter: invert(81%) sepia(5%) saturate(7%) hue-rotate(314deg) brightness(91%) contrast(94%);
+$orange-filter: invert(73%) sepia(52%) saturate(2571%) hue-rotate(337deg) brightness(102%) contrast(101%);
+$fontFamily: "Arial";
+$fontWeight: "500";
+$yellow: #fee11e;
+$padding: 16px;
+$margin: 16px;
+// $smallSize:12px;
+$normal: 12px;
+$medium: 16px;
+$big: 20px;
+$smallest: 10px;
+$violet: "#0A64A0";
+$text-color: $black-gray;
+
+$mobile_screen: 576px;
+$tablet_screen: 767.9px;
+/* --------------CSS TITLE---------- */
+.title {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  color: $black;
+}
+/* --------------CSS ---------- */
+h1 {
+  font-size: 32px;
+  color: $black;
+  margin: 0px;
+}
+h2 {
+  font-size: 24px;
+  color: $black;
+  margin: 0px;
+}
+h3 {
+  font-size: 18px;
+  color: $black;
+  margin: 0px;
+}
+h4 {
+  font-size: 16px;
+  color: $black;
+  margin: 0px;
+}
+h5 {
+  font-size: 14px;
+  color: $black;
+  margin: 0px;
+}
+
+h6 {
+  font-size: 12px;
+  color: $black;
+  margin: 0px;
+}
+p {
+  font-size: 14px;
+  color: $black;
+  margin: 0px;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ------------CSS BUTTON-----------*/
+@mixin _button($bg) {
+  background-color: $bg;
+  color: #fff;
+  border: $bg;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  align-content: center;
+  align-self: center;
+  font-weight: 600;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-left: 5px;
+  margin-right: 5px;
+  &:hover {
+    background-color: darken($bg, 8%);
+    color: #fff;
+  }
+  &:focus {
+    background-color: $bg;
+    color: #fff;
+  }
+}
+.button {
+  @include _button($main);
+}
+
+.button-orange {
+  @include _button($orange);
+}
+.button-red {
+  @include _button($red);
+}
+
+.button-blue {
+  @include _button($blue);
+}
+.button-danger {
+  @include _button($danger);
+}
+
+/* ----------------CSS TABLE ---------------- */
+.ant-table-thead > tr > th {
+  color: $white;
+  // font-weight: 500;
+  // text-align: left;
+  background: #f45f0f;
+  border-bottom: 1px solid $gray;
+  font-size: 14px;
+  height: 30px;
+}
+
+.ant-table-small .ant-table-thead {
+  color: $white;
+  // font-weight: 500;
+  // text-align: left;
+  background: #f45f0f;
+  border: $white;
+}
+
+.ant-table table {
+  background: $white;
+}
+
+.ant-table-small > .ant-table-content > .ant-table-body {
+  margin: 0px;
+}
+/* ------------------CSS Modal----------- */
+.ant-form-item-label {
+  font-weight: 500;
+}
+.ant-modal-header {
+  background: $main;
+  height: 40px;
+  padding-top: 8px;
+}
+.ant-modal-close-x {
+  display: block;
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 40px;
+  text-align: center;
+  text-transform: none;
+  text-rendering: auto;
+}
+.ant-modal-title {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  word-wrap: break-word;
+}
+
+// ---------------CSS ItemForm--------------------
+// .ant-form-item {
+//   margin-bottom: 0px;
+// }
+
+.ant-select-selection {
+  border-color: $gray;
+  min-height: 30px;
+}
+
+.ant-input {
+  border-color: $gray;
+  min-height: 30px;
+}
+.ant-scroll-number-only > p {
+  height: 20px;
+  margin: 0;
+  color: $white;
+}
+.ant-select {
+  font-size: $normal;
+}
+.tab-customize {
+  display: flex;
+  flex-direction: row;
+  // margin-top: 4px;
+}
+.card-container > .ant-tabs-card > .ant-tabs-content {
+  // height: 120px;
+  margin-top: -16px;
+}
+
+.card-container > .ant-tabs-card > .ant-tabs-content > .ant-tabs-tabpane {
+  background: $white;
+  padding: 5px;
+}
+
+.card-container > .ant-tabs-card > .ant-tabs-bar {
+  border-color: $white;
+}
+
+.card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
+  border-color: transparent;
+  background: transparent;
+}
+
+.card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active {
+  border-color: $white;
+  background: $white;
+}
+// .ant-upload.ant-upload-select-picture-card{
+//   width: 50px;
+//   height: 50px;
+// }
+
+.ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab-active {
+  background-color: $main;
+  color: $white;
+}
+.ant-modal-body {
+  padding: 4px;
+}
+.spin {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  // width: 100vh;
+  // height: 100vh;
+  padding-top: 50%;
+}
+.ant-list-split .ant-list-item:hover {
+  background-color: #0a64a0;
+}
+.hover_item:hover {
+  color: white;
+}
+.ant-form-item label {
+  position: relative;
+  color: $black;
+  font-size: 14px;
+}
+ant-table-thead > tr > th.ant-table-column-sort {
+  background-color: #f45f0f !important;
+}
+.ant-table-thead > tr > th .ant-table-header-column .ant-table-column-sorters::before {
+  background: #f45f0f;
+  opacity: 0.8;
+}
+.ant-table-thead > tr > th .ant-table-header-column .ant-table-column-sorters:hover::before {
+  background-color: #f45f0f !important;
+}
+
+.ant-table-small > .ant-table-content > .ant-table-header > table > .ant-table-thead > tr > th,
+.ant-table-small > .ant-table-content > .ant-table-body > table > .ant-table-thead > tr > th,
+.ant-table-small > .ant-table-content > .ant-table-scroll > .ant-table-header > table > .ant-table-thead > tr > th,
+.ant-table-small > .ant-table-content > .ant-table-scroll > .ant-table-body > table > .ant-table-thead > tr > th,
+.ant-table-small > .ant-table-content > .ant-table-fixed-left > .ant-table-header > table > .ant-table-thead > tr > th,
+.ant-table-small > .ant-table-content > .ant-table-fixed-right > .ant-table-header > table > .ant-table-thead > tr > th,
+.ant-table-small
+  > .ant-table-content
+  > .ant-table-fixed-left
+  > .ant-table-body-outer
+  > .ant-table-body-inner
+  > table
+  > .ant-table-thead
+  > tr
+  > th,
+.ant-table-small
+  > .ant-table-content
+  > .ant-table-fixed-right
+  > .ant-table-body-outer
+  > .ant-table-body-inner
+  > table
+  > .ant-table-thead
+  > tr
+  > th,
+.ant-table-small > .ant-table-content > .ant-table-header > table > .ant-table-tbody > tr > td,
+.ant-table-small > .ant-table-content > .ant-table-body > table > .ant-table-tbody > tr > td,
+.ant-table-small > .ant-table-content > .ant-table-scroll > .ant-table-header > table > .ant-table-tbody > tr > td,
+.ant-table-small > .ant-table-content > .ant-table-scroll > .ant-table-body > table > .ant-table-tbody > tr > td,
+.ant-table-small > .ant-table-content > .ant-table-fixed-left > .ant-table-header > table > .ant-table-tbody > tr > td,
+.ant-table-small > .ant-table-content > .ant-table-fixed-right > .ant-table-header > table > .ant-table-tbody > tr > td,
+.ant-table-small
+  > .ant-table-content
+  > .ant-table-fixed-left
+  > .ant-table-body-outer
+  > .ant-table-body-inner
+  > table
+  > .ant-table-tbody
+  > tr
+  > td,
+.ant-table-small
+  > .ant-table-content
+  > .ant-table-fixed-right
+  > .ant-table-body-outer
+  > .ant-table-body-inner
+  > table
+  > .ant-table-tbody
+  > tr
+  > td {
+  padding: 4px 2px;
+  height: 40px;
+}
+.ant-checkbox-wrapper {
+  margin: 2px 0;
+}
+
+.ant-select {
+  font-size: 14px;
+}
+.ant-layout-footer {
+  padding: 0px;
+}
+.ant-tabs-bar {
+  margin: 0px;
+}
+
+.ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab {
+  margin: 0px;
+}
+.ant-layout::-webkit-scrollbar {
+  width: 0px;
+  height: 90vh;
+}
+.ant-table ::-webkit-scrollbar {
+  width: 5px;
+}
+.ant-table ::-webkit-scrollbar-thumb {
+  background-color: $main;
+  border-radius: 10px;
+}
+.ant-input-number-disabled .ant-input-number-input {
+  color: $black;
+}
+.off_scroll::-webkit-scrollbar {
+  width: 2px;
+}
+.off_scroll::-webkit-scrollbar-thumb {
+  background: $main;
+  border-radius: 10px;
+}
+
+.ant-list-item-meta:hover {
+  background-color: #d3f2c3;
+}
+
+.ant-list-split .ant-list-item:hover {
+  background-color: #d3f2c3;
+}
+
+.hover_item:hover {
+  color: black;
+}
+.ant-input[disabled] {
+  color: $black;
+}
+.ant-select-disabled .ant-select-selection {
+  color: $black;
+}
+.view-noti-top {
+  border-bottom: 0.5px solid gray;
+}
+.view-noti-bottom {
+  border-top: 0.5px solid gray;
+}
+.modified-item:hover {
+  background-color: $main;
+  color: $white;
+}
+.container-store {
+  padding: 5px;
+  .item-name-pharmacy {
+    height: 40px;
+  }
+  .item-name-pharmacy:hover {
+    color: $white;
+    background-color: $main;
+    cursor: pointer;
+  }
+}
+
+::-webkit-scrollbar {
+  position: absolute;
+  height: 8px; /* height of horizontal scrollbar ← You're missing this */
+  width: 5px; /* width of vertical scrollbar */
+  // border: 1px solid #d5d5d5;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(71, 188, 13, 0.5);
+  // background: $main;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  width: 15px;
+  background: $main;
+}
+
+.ant-layout-sider-children:hover::-webkit-scrollbar-thumb {
+  background: $main;
+  border-radius: 4px;
+}
+
+.ant-menu-inline, .ant-menu-vertical, .ant-menu-vertical-left {
+  border-right: 1px solid #ffffff;
+}
+
+li:hover {
+  background: #e6f7ff;
+}
+
+.style-text-limit-number-line4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+.style-text-limit-number-line2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+.style-text-limit-number-line1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+@media print {
+  @page {
+    size: auto !important ;
+  }
+  body {
+    min-width: 100px !important;
+  }
+  .container {
+    min-width: 100px !important;
+  }
+}
+
+/* --------------REACT BOOTSTRAP---------- */
+.btn-outline-info {
+  color: $main2;
+  background-color: #fff;
+  border-style: none;
+  font-weight: bold;
+}
+
+.btn-outline-info:hover {
+  color: #fff;
+  background-color: $main2;
+}
+
+.btn-outline-info:focus {
+  box-shadow: none;
+}
+
+.anticon {
+  vertical-align: 0;
+}
+// thu gon dong
+@mixin line-clamp($number) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $number;
+  -webkit-box-orient: vertical;
+}
+
+.input-custom-underline,
+.input-number-custom-underline {
+  box-shadow: none !important;
+  border-right-width: 0px !important;
+  border-width: 0 0 2px;
+  border-color: #f45f0f;
+  background-color: #fff;
+  border-radius: 0;
+  border-radius: none !important;
+  padding: 0;
+  .ant-input-number-handler-wrap {
+    display: none;
+  }
+  &:focus {
+    border-right-width: 0px !important;
+    box-shadow: none;
+    border-color: #f45f0f;
+  }
+  &:hover {
+    border-right-width: 0px !important;
+    border-color: #f45f0f;
+  }
+  border-right-width: 0px !important;
+  .ant-input-number-input,
+  .ant-input {
+    padding: 0;
+    &:focus {
+      padding: 0;
+    }
+  }
+  &[disabled] {
+    color: #000000;
+    background-color: #fff;
+    &:hover,
+    &:focus {
+      border-right-width: 0 !important;
+      box-shadow: none !important;
+      border-color: #f45f0f;
+    }
+  }
+}
+.has-error {
+  .input-custom-underline:focus,
+  .input-number-custom-underline:focus {
+    border-color: red;
+    border-right-width: 0px !important;
+    outline: 0;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+  }
+  .select-custom-underline > .ant-select-selection {
+    box-shadow: none !important;
+    border-right-width: 0px !important;
+    border-width: 0 0 2px;
+    border-color: red;
+    border-radius: 0;
+    border-radius: none !important;
+    padding: 0;
+  }
+  .select-custom-underline:focus,
+  .ant-calendar-picker-input {
+    border-color: red;
+    border-right-width: 0px !important;
+    outline: 0;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+  }
+}
+
+.text-area-custom-underline {
+  border-width: 0.1px 0.1px 2px 0.1px;
+  border-color: $color-border $color-border $main $color-border;
+  box-shadow: none !important;
+  &:focus {
+    border-color: $color-border $color-border $main $color-border;
+    box-shadow: none !important;
+  }
+  &:hover {
+    border-color: $color-border $color-border $main $color-border;
+    box-shadow: none !important;
+  }
+  &[disabled] {
+    background-color: #fff;
+    &:hover {
+      border-color: #f45f0f;
+    }
+  }
+}
+.select-custom-underline {
+  .ant-select-selection {
+    box-shadow: none !important;
+    border-right-width: 0px !important;
+    border-width: 0 0 2px;
+    border-color: $main;
+    border-radius: 0;
+    border-radius: none !important;
+    background-color: #fff;
+    &:hover {
+      border-color: #f45f0f;
+    }
+  }
+  .ant-select-selection__rendered {
+    margin-left: 0 !important;
+  }
+}
+.date-picker-custom-underline {
+  .ant-calendar-picker-input {
+    box-shadow: none !important;
+    border-right-width: 0px !important;
+    border-width: 0 0 2px;
+    border-color: #f45f0f;
+    border-radius: 0;
+    border-radius: none !important;
+    padding: 0;
+    &:focus {
+      border-right-width: 0px !important;
+      box-shadow: none;
+      border-color: #f45f0f !important;
+    }
+    &:hover {
+      border-right-width: 0px !important;
+      border-color: #f45f0f !important;
+    }
+  }
+  .ant-input-disabled {
+    background-color: #fff;
+  }
+  &[disabled] {
+    &:hover {
+      border-color: #f45f0f;
+    }
+  }
+}
+.ant-form-explain {
+  color: red;
+}
