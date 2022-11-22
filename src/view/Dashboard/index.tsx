@@ -4,7 +4,7 @@ function Dashboard() {
   return (
     <div>
       <h1>Dashboard</h1>
-      <Link to='login'>Login</Link>
+      <Link to='sign-in'>Login</Link>
     </div>
   );
 }

@@ -1,5 +1,8 @@
 @import "../../App.scss";
-.test {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  color: red;
+.login-form {
+  max-width: 300px;
+  margin: 50px auto;
+}
+.login-form-forgot {
+  float: right;
 }
