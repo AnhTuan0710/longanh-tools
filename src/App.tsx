@@ -3,10 +3,11 @@ import { Route, Routes } from "react-router-dom";
 import Dashboard from './view/Dashboard';
 import SignIn from './view/Login/SignIn';
 import SignUp from './view/Login/SignUp';
+import Main from './layout/Main';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} />
+      <Route path="/" element={<Main children={Dashboard} />} />
       <Route path="/sign-in" element={<SignIn />} />
       <Route path="/sign-up" element={<SignUp />} />
     </Routes>
