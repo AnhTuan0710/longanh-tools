@@ -33,6 +33,28 @@ export default class SignUp extends Component {
         </Form.Item>
       )
     }
+    const _renderFormCheckYesCondition = () => {
+      return (
+        <Form.Item name="remember" valuePropName="checked">
+          <Checkbox>
+            Tôi đồng ý với điều khoản sử dụng
+          </Checkbox>
+        </Form.Item>
+      )
+    }
+    const _renderButtonSignUp = () => {
+      return (
+        <Form.Item>
+          <Button
+            style={{ width: "100%" }}
+            type="primary"
+            htmlType="submit"
+          >
+            Đăng kí
+          </Button>
+        </Form.Item>
+      )
+    }
     const _renderFormSignUp = () => {
       return (
         <Form
@@ -45,46 +67,44 @@ export default class SignUp extends Component {
           {_renderFormItem('name', 'Nhập tên người dùng!', 'Tên người dùng')}
           {_renderFormItem('account', 'Nhập tên tài khoản!', 'Tên tài khoản')}
           {_renderFormItem('password', 'Nhập mật khẩu!', 'Mật khẩu')}
-          <Form.Item name="remember" valuePropName="checked">
-            <Checkbox>
-              Tôi đồng ý với điều khoản sử dụng
-            </Checkbox>
-          </Form.Item>
-          <Form.Item>
-            <Button
-              style={{ width: "100%" }}
-              type="primary"
-              htmlType="submit"
-            >
-              Đăng kí
-            </Button>
-          </Form.Item>
+          {_renderFormCheckYesCondition()}
+          {_renderButtonSignUp()}
         </Form>
+      )
+    }
+    const _renderLinkToSignIn = () => {
+      return (
+        <p className="font-semibold text-muted text-center">
+          Bạn đã có tài khoản?{" "}
+          <Link to="/sign-in" className="font-bold text-dark">
+            Đăng nhập
+          </Link>
+        </p>
+      )
+    }
+    const _renderTitleSignUp = () => {
+      return (
+        <div className="sign-up-header">
+          <div className="content">
+            <Title>Đăng kí</Title>
+            <p className="text-lg">
+              Đăng kí tài khoản để sử dụng phần mềm miễn phí.
+            </p>
+          </div>
+        </div>
       )
     }
     const _renderContent = () => {
       return (
         <Content className="p-0">
-          <div className="sign-up-header">
-            <div className="content">
-              <Title>Đăng kí</Title>
-              <p className="text-lg">
-                Đăng kí tài khoản để sử dụng phần mềm miễn phí.
-              </p>
-            </div>
-          </div>
+          {_renderTitleSignUp()}
           <Card
             className="card-signup header-solid h-full ant-card pt-0"
             title={<h5>Đăng kí tài khoản</h5>}
             bordered={false}
           >
             {_renderFormSignUp()}
-            <p className="font-semibold text-muted text-center">
-              Bạn đã có tài khoản?{" "}
-              <Link to="/sign-in" className="font-bold text-dark">
-                Đăng nhập
-              </Link>
-            </p>
+            {_renderLinkToSignIn()}
           </Card>
         </Content>
       )
@@ -107,9 +127,9 @@ export default class SignUp extends Component {
           </div>
           <div className="header-col header-nav">
             <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
-              {_renderMenuItem('1', '/rivew-page',TEMPLATE, 'Tổng quan')}
-              {_renderMenuItem('2', '/sign-up',SIGNUP, 'Đăng kí')}
-              {_renderMenuItem('3', '/sign-in',SINGIN, 'Đăng nhập')}
+              {_renderMenuItem('1', '/rivew-page', TEMPLATE, 'Tổng quan')}
+              {_renderMenuItem('2', '/sign-up', SIGNUP, 'Đăng kí')}
+              {_renderMenuItem('3', '/sign-in', SINGIN, 'Đăng nhập')}
             </Menu>
           </div>
         </Header>
