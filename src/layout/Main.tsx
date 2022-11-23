@@ -1,41 +1,26 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Layout, Drawer, Affix } from "antd";
 import Header from "./Header";
-// import Sidenav from "./Sidenav";
+import Dashboard from "../view/Dashboard";
+import Sidenav from "./Sidenav";
+import Test from "../view/Dashboard/Test";
 // import Footer from "./Footer";
 
 const { Header: AntHeader, Content, Sider } = Layout;
 
-function Main(props: { children: any }) {
-  const {children} = props
-  const [visible, setVisible] = useState(false);
-  const [placement, setPlacement] = useState("right");
-  const [sidenavColor, setSidenavColor] = useState("#1890ff");
+function Main() {
+  const [visible, setVisible] = useState(false)
   const [sidenavType, setSidenavType] = useState("transparent");
-  const [fixed, setFixed] = useState(false);
-
   const openDrawer = () => setVisible(!visible);
   const handleSidenavType = (type: any) => setSidenavType(type);
-  const handleSidenavColor = (color: any) => setSidenavColor(color);
-  const handleFixedNavbar = (type: any) => setFixed(type);
+  const handleSidenavColor = (color: any) => { }
+  const handleFixedNavbar = (type: any) => { };
 
   let { pathname } = useLocation();
   pathname = pathname.replace("/", "");
-
-  useEffect(() => {
-    if (pathname === "rtl") {
-      setPlacement("left");
-    } else {
-      setPlacement("right");
-    }
-  }, [pathname]);
-
   return (
-    <Layout
-      className={`layout-dashboard ${pathname === "profile" ? "layout-profile" : ""
-        } ${pathname === "rtl" ? "layout-dashboard-rtl" : ""}`}
-    >
+    <Layout className={`layout-dashboard ${pathname === "profile" ? "layout-profile" : ""}}`}>
       <Sider
         breakpoint="lg"
         collapsedWidth="0"
@@ -49,36 +34,29 @@ function Main(props: { children: any }) {
           }`}
         style={{ background: sidenavType }}
       >
-        {/* <Sidenav color={sidenavColor} /> */}
+        <Sidenav color={'red'} />
       </Sider>
       <Layout>
-        {fixed ? (
-          <Affix>
-            <AntHeader className={`${fixed ? "ant-header-fixed" : ""}`}>
-              <Header
-                onPress={openDrawer}
-                name={pathname}
-                subName={pathname}
-                handleSidenavColor={handleSidenavColor}
-                handleSidenavType={handleSidenavType}
-                handleFixedNavbar={handleFixedNavbar}
-              />
-            </AntHeader>
-          </Affix>
-        ) : (
-          <AntHeader className={`${fixed ? "ant-header-fixed" : ""}`}>
-            {/* <Header
+        <Affix>
+          <AntHeader className="ant-header-fixed">
+            <Header
               onPress={openDrawer}
               name={pathname}
               subName={pathname}
               handleSidenavColor={handleSidenavColor}
               handleSidenavType={handleSidenavType}
               handleFixedNavbar={handleFixedNavbar}
-            /> */}
+            />
           </AntHeader>
-        )}
-        <Content className="content-ant">{children}</Content>
+        </Affix>
+        <Content className="content-ant">
+          <Routes>
+            <Route path='dashboard' element={<Dashboard />} />
+            <Route path='tables' element={<Test />} />
+          </Routes>
+        </Content>
         {/* <Footer /> */}
+
       </Layout>
     </Layout>
   );

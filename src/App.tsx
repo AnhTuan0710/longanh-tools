@@ -7,7 +7,9 @@ import Main from './layout/Main';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Main children={Dashboard} />} />
+      <Route path='/' element={<Main />}>
+        <Route index path='dashboard' element={<Dashboard />} />
+      </Route>
       <Route path="/sign-in" element={<SignIn />} />
       <Route path="/sign-up" element={<SignUp />} />
     </Routes>
