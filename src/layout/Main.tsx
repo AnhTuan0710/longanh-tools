@@ -1,14 +1,9 @@
-import { useState, useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
-import { Layout, Drawer, Affix } from "antd";
-import Header from "./Header";
-import Dashboard from "../view/Dashboard";
+import { useState } from "react";
+import { Outlet, useLocation } from "react-router-dom";
+import { Layout, Affix } from "antd";
 import Sidenav from "./Sidenav";
-import Test from "../view/Dashboard/Test";
-// import Footer from "./Footer";
-
-const { Header: AntHeader, Content, Sider } = Layout;
-
+import Header from "./Header";
+const { Header: AntHeader, Footer, Sider, Content } = Layout;
 function Main() {
   const [visible, setVisible] = useState(false)
   const [sidenavType, setSidenavType] = useState("transparent");
@@ -16,11 +11,10 @@ function Main() {
   const handleSidenavType = (type: any) => setSidenavType(type);
   const handleSidenavColor = (color: any) => { }
   const handleFixedNavbar = (type: any) => { };
-
   let { pathname } = useLocation();
   pathname = pathname.replace("/", "");
   return (
-    <Layout className={`layout-dashboard ${pathname === "profile" ? "layout-profile" : ""}}`}>
+    <Layout className="layout-dashboard">
       <Sider
         breakpoint="lg"
         collapsedWidth="0"
@@ -30,15 +24,15 @@ function Main() {
         trigger={null}
         width={250}
         theme="light"
-        className={`sider-primary ant-layout-sider-primary ${sidenavType === "#fff" ? "active-route" : ""
+        className={`sider-primary ${sidenavType === "#fff" ? "active-route" : ""
           }`}
         style={{ background: sidenavType }}
       >
-        <Sidenav color={'red'} />
+        <Sidenav />
       </Sider>
       <Layout>
         <Affix>
-          <AntHeader className="ant-header-fixed">
+          <AntHeader className={"ant-header-fixed"}>
             <Header
               onPress={openDrawer}
               name={pathname}
@@ -49,14 +43,12 @@ function Main() {
             />
           </AntHeader>
         </Affix>
-        <Content className="content-ant">
-          <Routes>
-            <Route path='dashboard' element={<Dashboard />} />
-            <Route path='tables' element={<Test />} />
-          </Routes>
+        <Content>
+          <Outlet></Outlet>
         </Content>
-        {/* <Footer /> */}
-
+        <Footer style={{ textAlign: 'center' }}>
+          @Copyright by KIT - Phần mềm quản lí cửa hàng kim khí Long Anh - Version 1.0.0
+        </Footer>
       </Layout>
     </Layout>
   );
