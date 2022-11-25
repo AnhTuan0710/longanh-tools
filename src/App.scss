@@ -225,7 +225,15 @@ a {
   border-color: $gray;
   min-height: 30px;
 }
-
+.ant-select-selector {
+  border-color: $gray;
+  min-height: 40px;
+  align-items: center;
+  min-width: 190px;
+}
+.ant-input-number-input {
+  min-height: 40px;
+}
 .ant-input {
   border-color: $gray;
   min-height: 30px;
