@@ -1,6 +1,5 @@
-import { DeleteOutlined, SearchOutlined } from '@ant-design/icons'
-import { Input, Popconfirm } from 'antd'
-import ButtonAdd from '../../elements/ButtonAdd/ButtonAdd'
+import { DeleteOutlined, PlusCircleOutlined, SearchOutlined } from '@ant-design/icons'
+import { Button, Input, Popconfirm } from 'antd'
 import './category.scss'
 import { Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
@@ -8,9 +7,12 @@ import { CategoryType } from '../../dataType/category';
 import { ProductType } from '../../dataType/product';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ModalAddCategory from './ModalAddCategory';
 export default function Category() {
   const navigate = useNavigate()
   const [loadingTable, setloadingTable] = useState(false)
+  const [productName, setProductName] = useState('')
+  const [showModalAddCategory, setShowModalAddCategory] = useState(false)
   const handleRemoveCategory = (e: any, record: CategoryType) => {
     e.stopPropagation()
     console.log(record, 'keytest')
@@ -24,7 +26,7 @@ export default function Category() {
         okText="Yes"
         cancelText="No"
       >
-        <DeleteOutlined onClick={(e) => e.stopPropagation()}/>
+        <DeleteOutlined onClick={(e) => e.stopPropagation()} />
       </Popconfirm>
     )
   }
@@ -79,23 +81,38 @@ export default function Category() {
   ];
 
   const handleOnRowTable = (record: CategoryType) => {
-    console.log(record, 'keytest')
-    navigate(`/category/${record.category_cd}`, {state: record})
+    navigate(`/category/${record.category_cd}`, { state: record })
   }
-  return (
-    <div className='category-container'>
+  const onchangeNameSearch = (e: any) => {
+    setProductName(e.target.value)
+    console.log(e.target.value, 'name')
+  }
+  const handleAddCategory = () => {
+    console.log('Add danh muc moi')
+  }
+  const _renderHeaderCategory = () => {
+    return (
       <div className='header-category'>
         <div className='title-category'>
           <h4>Danh mục sản phẩm</h4>
-          <ButtonAdd />
+          <Button className='button' onClick={() => setShowModalAddCategory(true)}>
+            <PlusCircleOutlined />
+            Thêm mới
+          </Button>
         </div>
         <Input
           className="header-search"
-          placeholder="Nhập mã danh mục..."
+          placeholder="Nhập tên danh mục..."
+          value={productName}
+          onChange={onchangeNameSearch}
           prefix={<SearchOutlined />}
           style={{ width: '300px' }}
         />
       </div>
+    )
+  }
+  const _renderTableCategory = () => {
+    return (
       <div className='list-category-container'>
         <Table
           rowKey={'table-category'}
@@ -109,6 +126,19 @@ export default function Category() {
           }}
         />
       </div>
+    )
+  }
+  return (
+    <div className='category-container'>
+      {_renderHeaderCategory()}
+      {_renderTableCategory()}
+      {showModalAddCategory &&
+        <ModalAddCategory
+          handleCancel={() => setShowModalAddCategory(false)}
+          handleOk={handleAddCategory}
+          confirmLoading={false}
+        />
+      }
     </div>
   )
 }
