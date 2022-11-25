@@ -19,7 +19,7 @@ function Main() {
         breakpoint="lg"
         collapsedWidth="0"
         onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
+          // console.log(collapsed, type);
         }}
         trigger={null}
         width={250}
@@ -47,7 +47,7 @@ function Main() {
           <Outlet></Outlet>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
-          @Copyright by KIT - Phần mềm quản lí cửa hàng kim khí Long Anh - Version 1.0.0
+          @Copyright by KIT - Phần mềm quản lý cửa hàng kim khí Long Anh - Version 1.0.0
         </Footer>
       </Layout>
     </Layout>

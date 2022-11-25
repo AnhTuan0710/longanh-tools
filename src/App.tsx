@@ -14,12 +14,14 @@ import Export from './view/Export';
 import Check from './view/Check';
 import Inventory from './view/Inventory';
 import Revenue from './view/Revenue';
+import CategoryDetail from './view/Category/CategoryDetail';
 function App() {
   return (
     <Routes>
       <Route path='/' element={<Main />} >
         <Route index path='dashboard' element={<Dashboard />} />
         <Route path='invoice' element={<Invoice />} />
+        <Route path='category/:id' element={<CategoryDetail />} />
         <Route path='category' element={<Category />} />
         <Route path='product' element={<Product />} />
         <Route path='customer' element={<Customer />} />
