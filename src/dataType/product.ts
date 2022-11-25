@@ -5,5 +5,6 @@ export interface ProductType {
   image: string,
   price: number,
   price_import: number,
-  amount: number
+  amount: number,
+  unit: string,
 }
