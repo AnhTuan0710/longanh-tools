@@ -11,7 +11,7 @@ import ModalAddCategory from './ModalAddCategory';
 export default function Category() {
   const navigate = useNavigate()
   const [loadingTable, setloadingTable] = useState(false)
-  const [productName, setProductName] = useState('')
+  const [categoryName, setCategoryName] = useState('')
   const [showModalAddCategory, setShowModalAddCategory] = useState(false)
   const handleRemoveCategory = (e: any, record: CategoryType) => {
     e.stopPropagation()
@@ -20,7 +20,7 @@ export default function Category() {
   const _renderButtonDelete = (text: any, record: CategoryType, index: number) => {
     return (
       <Popconfirm
-        title="Bạn có chắc chắn xóa sản phẩm?"
+        title="Bạn có chắc chắn xóa danh mục?"
         onConfirm={(e) => handleRemoveCategory(e, record)}
         onCancel={(e: any) => e.stopPropagation()}
         okText="Yes"
@@ -84,7 +84,7 @@ export default function Category() {
     navigate(`/category/${record.category_cd}`, { state: record })
   }
   const onchangeNameSearch = (e: any) => {
-    setProductName(e.target.value)
+    setCategoryName(e.target.value)
     console.log(e.target.value, 'name')
   }
   const handleAddCategory = () => {
@@ -103,7 +103,7 @@ export default function Category() {
         <Input
           className="header-search"
           placeholder="Nhập tên danh mục..."
-          value={productName}
+          value={categoryName}
           onChange={onchangeNameSearch}
           prefix={<SearchOutlined />}
           style={{ width: '300px' }}
