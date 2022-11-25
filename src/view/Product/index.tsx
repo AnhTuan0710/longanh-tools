@@ -71,7 +71,7 @@ export default function Product() {
     console.log(e.target.value, 'name')
   }
   const handleAddCategory = () => {
-    console.log('Add danh muc moi')
+    console.log('Thêm danh mục mới')
   }
   const _renderHeaderCategory = () => {
     return (
