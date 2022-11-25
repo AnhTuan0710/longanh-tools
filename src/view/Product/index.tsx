@@ -7,13 +7,13 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TableListProduct from '../../components/TableListProduct';
 import ModalProductDetail from './ModalProductDetail';
-export default function Product() {
+export default function Customer() {
   const navigate = useNavigate()
   const [loadingTable, setloadingTable] = useState(false)
   const [productName, setProductName] = useState('')
   const [showModalAddProduct, setShowModalAddProduct] = useState(false)
   const [showModalDetailProduct, setShowModalDetailProduct] = useState(false)
-  const handleRemoveCategory = (e: any, record: CategoryType) => {
+  const handleRemoveProduct = (e: any, record: CategoryType) => {
     e.stopPropagation()
     console.log(record, 'keytest')
   }
@@ -21,7 +21,7 @@ export default function Product() {
     return (
       <Popconfirm
         title="Bạn có chắc chắn xóa sản phẩm?"
-        onConfirm={(e) => handleRemoveCategory(e, record)}
+        onConfirm={(e) => handleRemoveProduct(e, record)}
         onCancel={(e: any) => e.stopPropagation()}
         okText="Yes"
         cancelText="No"
@@ -30,38 +30,6 @@ export default function Product() {
       </Popconfirm>
     )
   }
-  const columns: ColumnsType<CategoryType> = [
-    {
-      title: 'STT',
-      dataIndex: 'stt',
-      key: 'stt',
-      render: (text: any, record: CategoryType, index: number) => <a>{index + 1}</a>,
-    },
-    {
-      title: 'Mã danh mục',
-      dataIndex: 'category_cd',
-      key: 'category_cd',
-      render: text => <a>{text}</a>,
-    },
-    {
-      title: 'Tên danh mục',
-      dataIndex: 'category_name',
-      key: 'category_name',
-    },
-    {
-      title: 'Số lượng mặt hàng',
-      dataIndex: 'list_product',
-      key: 'list_product',
-      render: (text: ProductType[]) => <div>{text.length}</div>,
-    },
-    {
-      title: 'Xóa',
-      dataIndex: 'delete',
-      key: 'delete',
-      render: _renderButtonDelete,
-    },
-
-  ];
   const handleOnRowTable = (record: CategoryType) => {
     navigate(`/category/${record.category_cd}`, { state: record })
   }
@@ -69,10 +37,10 @@ export default function Product() {
     setProductName(e.target.value)
     console.log(e.target.value, 'name')
   }
-  const handleAddCategory = () => {
-    console.log('Add danh muc moi')
+  const handleAddCustomer = () => {
+    console.log('Add san pham moi')
   }
-  const _renderHeaderCategory = () => {
+  const _renderHeaderProduct = () => {
     return (
       <div className='header-category'>
         <div className='title-category'>
@@ -93,7 +61,7 @@ export default function Product() {
       </div>
     )
   }
-  const _renderTableCategory = () => {
+  const _renderTableProduct = () => {
     return (
       <div className='list-category-container'>
         <TableListProduct
@@ -106,8 +74,8 @@ export default function Product() {
   }
   return (
     <div className='category-container'>
-      {_renderHeaderCategory()}
-      {_renderTableCategory()}
+      {_renderHeaderProduct()}
+      {_renderTableProduct()}
       {showModalAddProduct &&
         <ModalProductDetail
           title='Thêm sản phẩm mới'
