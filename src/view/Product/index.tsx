@@ -62,23 +62,6 @@ export default function Product() {
     },
 
   ];
-  const data: CategoryType[] = [
-    {
-      category_cd: 'DM00001',
-      category_name: 'Bua',
-      list_product: []
-    },
-    {
-      category_cd: 'DM00002',
-      category_name: 'Kim',
-      list_product: []
-    },
-    {
-      category_cd: 'DM00003',
-      category_name: 'Keo',
-      list_product: []
-    }
-  ];
 
   const handleOnRowTable = (record: CategoryType) => {
     navigate(`/category/${record.category_cd}`, { state: record })
