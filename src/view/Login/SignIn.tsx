@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Layout,
   Menu,
@@ -10,15 +10,25 @@ import {
   Form,
   Input,
   Switch,
+  notification,
 } from "antd";
 import { LOGO } from "../../assets";
 import { SIGNUP, SINGIN, TEMPLATE } from "../../elements";
 const { Title } = Typography;
 const { Header, Content } = Layout;
 export default function SignIn() {
+  const navigate = useNavigate()
   const [showPW, setShowPW] = useState(false)
   const onFinish = (values: any) => {
-    console.log("Success:", values);
+    if(values.account=== '0857847685' && values.password === '123123')  {
+      navigate('/dashboard')
+    }
+    else {
+      notification.error({
+        message: 'Thông báo',
+        description: 'Sai tên đăng nhập hoặc mật khẩu',
+      })
+    }
   };
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);

@@ -60,6 +60,12 @@ export default function Product() {
       render: text => <a>{text}</a>,
     },
     {
+      title: 'Tổng nợ',
+      dataIndex: 'amount_debt',
+      key: 'amount_debt',
+      render: text => <a>{text}</a>,
+    },
+    {
       title: 'Xóa',
       dataIndex: 'delete',
       key: 'delete',
