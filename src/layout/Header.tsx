@@ -223,7 +223,7 @@ type Props = {
   handleFixedNavbar: Function,
 }
 function Header(props: Props) {
-  const {placement, name, subName, onPress, handleFixedNavbar, handleSidenavColor, handleSidenavType} = props
+  const { placement, name, subName, onPress, handleFixedNavbar, handleSidenavColor, handleSidenavType } = props
   const { Title, Text } = Typography;
 
   const [visible, setVisible] = useState(false);
@@ -245,16 +245,13 @@ function Header(props: Props) {
             <Breadcrumb.Item>
               <NavLink to="/">Pages</NavLink>
             </Breadcrumb.Item>
-            {/* <Breadcrumb.Item style={{ textTransform: "capitalize" }}>
-              {name.replace("/", "")}
-            </Breadcrumb.Item> */}
           </Breadcrumb>
           <div className="ant-page-header-heading">
             <span
               className="ant-page-header-heading-title"
               style={{ textTransform: "capitalize" }}
             >
-              {subName.replace("/", "")}
+              {subName.replace("/", " --> ")}
             </span>
           </div>
         </Col>

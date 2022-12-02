@@ -23,6 +23,9 @@ export default function SignIn() {
     if(values.account=== '0857847685' && values.password === '123123')  {
       navigate('/dashboard')
     }
+    else if(values.account=== '0857847686' && values.password === '123123'){
+      navigate('/invoice')
+    }
     else {
       notification.error({
         message: 'Thông báo',
