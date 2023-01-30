@@ -20,10 +20,10 @@ export default function SignIn() {
   const navigate = useNavigate()
   const [showPW, setShowPW] = useState(false)
   const onFinish = (values: any) => {
-    if(values.account=== '0857847685' && values.password === '123123')  {
+    if (values.account === '0857847685' && values.password === '123123') {
       navigate('/dashboard')
     }
-    else if(values.account=== '0857847686' && values.password === '123123'){
+    else if (values.account === '0857847686' && values.password === '123123') {
       navigate('/invoice')
     }
     else {

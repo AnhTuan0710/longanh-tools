@@ -1,5 +1,5 @@
 import { PlusOutlined } from '@ant-design/icons';
-import { Button, Col, Form, Input, InputNumber, Modal, Row, Select, Upload } from 'antd'
+import { Button, Col, Form, Input, InputNumber, Modal, notification, Row, Select, Upload } from 'antd'
 import { ProductType } from '../../dataType/product'
 type Props = {
   title: string,
@@ -10,11 +10,26 @@ type Props = {
 const { Option } = Select
 export default function ModalProductDetail(props: Props) {
   const { title, productInfo, handleOk, handleCancel } = props
-  const onFinish = (e: any) => {
-    console.log(e, 'key')
+  const onFinish = (e: ProductType) => {
+    if(e.price < e.price_import) {
+      notification.warning({
+        message: 'Thông báo',
+        description: 'Gía nhập không được cao hơn gía bán!'
+      })
+    }
+    else {
+      notification.success({
+        message: 'Thông báo',
+        description: `Thêm sản phẩm ${e.product_name} thành công!`
+      })
+      handleCancel()
+    }
   }
   const onFinishFailed = (e: any) => {
-    console.log(e, 'key')
+    notification.warning({
+      message: 'Thông báo',
+      description: 'Giá trị nhập chưa hợp lệ!'
+    })
   }
   const _renderFormImageProduct = () => {
     return (
