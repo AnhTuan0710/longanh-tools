@@ -17,6 +17,7 @@ import Revenue from './view/Revenue';
 import CategoryDetail from './view/Category/CategoryDetail';
 import ImportCreateNew from './view/ImportCreateNew';
 import InvoiceCreateNew from './view/InvoiceCreateNew';
+import CheckInvCreateNew from './view/CheckInvCreateNew';
 function App() {
   return (
     <Routes>
@@ -35,6 +36,7 @@ function App() {
         <Route path='revenue' element={<Revenue />} />
         <Route path='import/new' element={<ImportCreateNew />} />
         <Route path='invoice/new' element={<InvoiceCreateNew />} />
+        <Route path='check/new' element={<CheckInvCreateNew />} />
       </Route>
       <Route path="/sign-in" element={<SignIn />} />
       <Route path="/sign-up" element={<SignUp />} />
