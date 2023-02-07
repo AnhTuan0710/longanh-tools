@@ -226,7 +226,7 @@ export default function Import() {
   const gotoCreateImport = () => {
     navigate('/import/new')
   }
-  const _renderHeaderCustomer = () => {
+  const _renderHeaderImport = () => {
     return (
       <div className='header-category'>
         <div className='title-category'>
@@ -266,7 +266,7 @@ export default function Import() {
   }
   return (
     <div className='category-container'>
-      {_renderHeaderCustomer()}
+      {_renderHeaderImport()}
       {_renderHistoryImport()}
       {modalDetailImport && importInfoDetail &&
         <ModalImportDetail
