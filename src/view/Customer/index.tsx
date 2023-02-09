@@ -1,19 +1,29 @@
 import { DeleteOutlined, PlusCircleOutlined, SearchOutlined } from '@ant-design/icons'
 import { Button, Input, Popconfirm, Table } from 'antd'
 import type { ColumnsType } from 'antd/es/table';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import api from '../../api';
 import { CustomerType } from '../../dataType/custormer';
 import ModalCustomerDetail from './ModalCustomerDetail';
 export default function Product() {
-  const navigate = useNavigate()
   const [loadingTable, setloadingTable] = useState(false)
   const [customerName, setCustomerName] = useState('')
   const [showModalAddCustomer, setShowModalAddCustomer] = useState(false)
   const [showModalDetailCustomer, setShowModalDetailCustomer] = useState(false)
+  const [listCustomer, setListCustomer] = useState<CustomerType[]>([])
   const handleRemoveCustomer = (e: any, record: CustomerType) => {
     e.stopPropagation()
-    console.log(record, 'keytest')
+  }
+  useEffect(() => {
+    getAllCustomer()
+  }, [])
+  const getAllCustomer = async () => {
+    try {
+      const res = await api.customer.getAllCustomer()
+      setListCustomer(res.data)
+    } catch (err) {
+      console.log(err)
+    }
   }
   const _renderButtonDelete = (text: any, record: CustomerType, index: number) => {
     return (
@@ -37,8 +47,8 @@ export default function Product() {
     },
     {
       title: 'Mã khách hàng',
-      dataIndex: 'customer_cd',
-      key: 'customer_cd',
+      dataIndex: 'customer_id',
+      key: 'customer_id',
       render: text => <a>{text}</a>,
     },
     {
@@ -74,14 +84,11 @@ export default function Product() {
 
   ];
   const handleOnRowTable = (record: CustomerType) => {
-    
+
   }
   const onchangeNameSearch = (e: any) => {
     setCustomerName(e.target.value)
     console.log(e.target.value, 'name')
-  }
-  const handleAddCategory = () => {
-    console.log('Add danh muc moi')
   }
   const _renderHeaderCustomer = () => {
     return (
@@ -108,9 +115,9 @@ export default function Product() {
     return (
       <div className='list-category-container'>
         <Table
-          rowKey={'table-category'}
+          rowKey={'customer_id'}
           columns={columns}
-          dataSource={[]}
+          dataSource={listCustomer}
           loading={loadingTable}
           onRow={(record, rowIndex) => {
             return {
