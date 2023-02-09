@@ -1,11 +1,26 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { ThunkAction, Action, createStore, applyMiddleware } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import createSagaMiddleware from 'redux-saga';
+import rootReducers from '../redux/reducers';
+import { logger } from 'redux-logger';
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
-});
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ['customer']
+};
+const persistedReducer = persistReducer(persistConfig, rootReducers);
+
+const sagaMiddleware = createSagaMiddleware();
+const middleware = [];
+middleware.push(sagaMiddleware);
+middleware.push(logger);
+
+export const store = createStore(
+  persistedReducer,
+  applyMiddleware(...middleware)
+);
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
