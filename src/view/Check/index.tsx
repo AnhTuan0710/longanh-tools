@@ -106,7 +106,7 @@ export default function Import() {
     }
   ]
   const onchangeNameSearch = (e: any) => {
-    setloadingTable(e.target.value)
+    setCheckInvId(e.target.value)
     console.log(e.target.value, 'name')
   }
   const gotoCreateCheckInv = () => {
